@@ -48,6 +48,14 @@ class Cadastro extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         // Title text at the top of the form
+                        Image(
+                        image: AssetImage(
+                            'Perfil.png'), // ou NetworkImage para imagens da web
+                        width: 35, // Largura da imagem
+                        height: 35, // Altura da imagem
+                        fit: BoxFit
+                            .cover, // Como a imagem deve se ajustar ao tamanho
+                      ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: Text(
@@ -60,6 +68,7 @@ class Cadastro extends StatelessWidget {
                           ),
                         ),
                         // Form fields
+                        
                         TextFormField(
                           autofocus: true,
                           decoration: InputDecoration(

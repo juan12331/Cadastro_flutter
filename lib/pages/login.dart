@@ -53,8 +53,8 @@ class Login extends StatelessWidget {
                       Image(
                         image: AssetImage(
                             'Perfil.png'), // ou NetworkImage para imagens da web
-                        width: 100, // Largura da imagem
-                        height: 100, // Altura da imagem
+                        width: 35, // Largura da imagem
+                        height: 35, // Altura da imagem
                         fit: BoxFit
                             .cover, // Como a imagem deve se ajustar ao tamanho
                       ),
