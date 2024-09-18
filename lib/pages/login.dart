@@ -10,7 +10,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  String? _errorMessage; // To hold the error message
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,7 @@ class _LoginState extends State<Login> {
                             hintText: "Informe o email",
                           ),
                           validator: (String? email) {
-                            if (email == null || email == '') {
+                            if (email == null || email.isEmpty) {
                               return "O email não pode ser vazio";
                             } 
                             if (email.length < 6) {
@@ -86,7 +85,7 @@ class _LoginState extends State<Login> {
                             if (!email.contains("@")) {
                               return "Email inválido";
                             }
-                            return '';
+                            return null;
                           },
                         ),
                         SizedBox(height: 16),
@@ -100,19 +99,19 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           obscureText: true,
+                          validator: (String? password) {
+                            if (password == null || password.isEmpty) {
+                              return "A senha não pode ser vazia";
+                            }
+                            // Adicione mais critérios, se necessário
+                            return null;
+                          },
+
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState?.validate() ?? false) {
-                              setState(() {
-                                _errorMessage = null; // Clear any previous error
-                              });
-                            } else {
-                              setState(() {
-                                _errorMessage = "email ou senha incompletos/errados";
-                              });
-                            }
+                            buttonEnterClick();
                           },
                           child: const Text(
                             "Entrar",
@@ -130,17 +129,6 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        if (_errorMessage != null)
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              _errorMessage!,
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
                         Divider(),
                         Text(
                           "Esqueci a senha",
@@ -181,5 +169,12 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+  buttonEnterClick() {
+    if (_formKey.currentState!.validate()) {
+      print("form ok");
+    } else {
+      print("form erro");
+    }
   }
 }
