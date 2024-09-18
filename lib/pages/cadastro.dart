@@ -50,7 +50,7 @@ class Cadastro extends StatelessWidget {
                         // Title text at the top of the form
                         Image(
                         image: AssetImage(
-                            'Perfil.png'), // ou NetworkImage para imagens da web
+                            'assets/Perfil.png'), // ou NetworkImage para imagens da web
                         width: 35, // Largura da imagem
                         height: 35, // Altura da imagem
                         fit: BoxFit
