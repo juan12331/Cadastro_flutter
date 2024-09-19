@@ -151,10 +151,7 @@ class _LoginState extends State<Login> {
                         SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Cadastro()),
-                            );
+                            Navigator.pushNamed(context, "/cadastro");
                           },
                           child: const Text(
                             "Cadastre-se",

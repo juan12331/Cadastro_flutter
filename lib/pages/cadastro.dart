@@ -250,10 +250,7 @@ class _CadastroState extends State<Cadastro> {
                         Divider(),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Login()),
-                            );
+                            Navigator.pushNamed(context, "/");
                           },
                           child: const Text(
                             "Já tenho conta",
