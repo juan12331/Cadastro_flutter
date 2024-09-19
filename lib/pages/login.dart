@@ -181,6 +181,7 @@ class _LoginState extends State<Login> {
   buttonEnterClick() {
     if (_formKey.currentState!.validate()) {
       print("form ok");
+      Navigator.pushReplacementNamed(context, "/home");
     } else {
       print("form erro");
     }
