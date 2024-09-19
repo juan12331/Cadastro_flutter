@@ -188,7 +188,6 @@ class _CadastroState extends State<Cadastro> {
                             hintText: "Confirmar Senha",
                             suffixIcon: GestureDetector(
                               onTap: () {
-                                print('asda');
                                 setState(() {
                                   _isObscured =
                                       !_isObscured; // Inverte o valor de _isObscured
@@ -219,6 +218,7 @@ class _CadastroState extends State<Cadastro> {
                             if (_formKey.currentState?.validate() ?? false) {
                               // Se o formulário for válido, você pode prosseguir com a lógica de cadastro
                               print("Cadastro realizado com sucesso!");
+                              Navigator.pushNamed(context, "/");
                             } else {
                               setState(() {
                                 _errorMessage =
