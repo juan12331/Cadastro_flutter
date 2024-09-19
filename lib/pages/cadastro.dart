@@ -11,6 +11,8 @@ class Cadastro extends StatefulWidget {
 class _CadastroState extends State<Cadastro> {
   final _formKey = GlobalKey<FormState>();
   String? _errorMessage; // Para armazenar mensagens de erro
+  bool _isObscured = true;
+  bool _isObscuredConfirm = true;
   String? _senha; // Para armazenar a senha para comparação
 
   @override
@@ -102,7 +104,8 @@ class _CadastroState extends State<Cadastro> {
                             if (value == null || value.isEmpty) {
                               return "CPF não pode ser vazio";
                             }
-                            if (value.length != 11 || !RegExp(r'^\d{11}$').hasMatch(value)) {
+                            if (value.length != 11 ||
+                                !RegExp(r'^\d{11}$').hasMatch(value)) {
                               return "CPF deve ter 11 dígitos e não conter letras";
                             }
                             return null;
@@ -136,7 +139,9 @@ class _CadastroState extends State<Cadastro> {
                             if (value == null || value.isEmpty) {
                               return "Email não pode ser vazio";
                             }
-                            if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(value)) {
+                            if (!RegExp(
+                                    r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+                                .hasMatch(value)) {
                               return "Email inválido";
                             }
                             return null;
@@ -149,11 +154,22 @@ class _CadastroState extends State<Cadastro> {
                             icon: Icon(Icons.lock),
                             hintText: "Senha",
                             suffixIcon: GestureDetector(
-                              child: Icon(Icons.visibility),
+                              onTap: () {
+                                setState(() {
+                                  _isObscuredConfirm =
+                                      !_isObscuredConfirm; // Inverte o valor de _isObscured
+                                });
+                              },
+                              child: Icon(  
+                                _isObscuredConfirm
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
                           ),
-                          obscureText: true,
-                          onChanged: (value) => _senha = value, // Armazenar a senha
+                          obscureText: _isObscuredConfirm,
+                          onChanged: (value) =>
+                              _senha = value, // Armazenar a senha
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Senha não pode ser vazia";
@@ -171,10 +187,21 @@ class _CadastroState extends State<Cadastro> {
                             icon: Icon(Icons.lock),
                             hintText: "Confirmar Senha",
                             suffixIcon: GestureDetector(
-                              child: Icon(Icons.visibility),
+                              onTap: () {
+                                print('asda');
+                                setState(() {
+                                  _isObscured =
+                                      !_isObscured; // Inverte o valor de _isObscured
+                                });
+                              },
+                              child: Icon(
+                                _isObscured
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
                           ),
-                          obscureText: true,
+                          obscureText: _isObscured,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Confirmar senha não pode ser vazio";
@@ -194,7 +221,8 @@ class _CadastroState extends State<Cadastro> {
                               print("Cadastro realizado com sucesso!");
                             } else {
                               setState(() {
-                                _errorMessage = "Por favor, corrija os erros acima.";
+                                _errorMessage =
+                                    "Por favor, corrija os erros acima.";
                               });
                             }
                           },
@@ -234,7 +262,8 @@ class _CadastroState extends State<Cadastro> {
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromARGB(255, 5, 160, 0),
+                            backgroundColor:
+                                const Color.fromARGB(255, 5, 160, 0),
                             fixedSize: Size(150, 35),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.5),
