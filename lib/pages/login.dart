@@ -11,6 +11,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
+  bool _isObscured = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,10 +97,19 @@ class _LoginState extends State<Login> {
                             icon: Icon(Icons.lock),
                             hintText: "Informe a senha",
                             suffixIcon: GestureDetector(
-                              child: Icon(Icons.visibility_off),
+                              onTap: () {
+                                setState(() {
+                                  _isObscured = !_isObscured;
+                                });
+                              },
+                              child: Icon(
+                                _isObscured
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                    ),
                             ),
                           ),
-                          obscureText: true,
+                          obscureText: _isObscured,
                           validator: (String? password) {
                             if (password == null || password.isEmpty) {
                               return "A senha não pode ser vazia";
