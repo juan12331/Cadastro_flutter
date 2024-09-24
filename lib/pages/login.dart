@@ -40,11 +40,13 @@ class _LoginState extends State<Login> {
           Positioned.fill(
             child: Center(
               child: Container(
+                height: MediaQuery.of(context).size.height * 1,
                 padding: const EdgeInsets.all(13.5),
                 margin: const EdgeInsets.all(8),
                 width: double.infinity,
                 constraints: BoxConstraints(maxWidth: 400),
                 decoration: BoxDecoration(
+                  
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4.5),
                 ),
