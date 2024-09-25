@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terceiro/shared/style.dart';
 import 'cadastro.dart';
 
 class Login extends StatefulWidget {
@@ -16,6 +17,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: const Color.fromARGB(255, 54, 69, 79),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 27, 18, 18),
@@ -36,21 +38,28 @@ class _LoginState extends State<Login> {
         ),
       ),
       body: Stack(
+        
         children: [
+          
           Positioned.fill(
+            
             child: Center(
+              
               child: Container(
-                height: MediaQuery.of(context).size.height * 1,
+                // height: MediaQuery.of(context).size.height * 1,
                 padding: const EdgeInsets.all(13.5),
                 margin: const EdgeInsets.all(8),
                 width: double.infinity,
                 constraints: BoxConstraints(maxWidth: 400),
                 decoration: BoxDecoration(
                   
+                  // gradient: LinearGradient(
+                  
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4.5),
                 ),
                 child: SingleChildScrollView(
+                  
                   child: Form(
                     key: _formKey,
                     child: Column(

@@ -3,6 +3,7 @@ import 'package:terceiro/shared/style.dart';
 import 'pages/login.dart';
 import 'pages/cadastro.dart';
 import 'pages/home.dart';
+import 'pages/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +23,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) => const Login(),
+        '/': (context) => const Splashscreen(),
+        '/login': (context) => const Login(),
         '/cadastro': (context) => const Cadastro(),
-         '/home': (context) => const Home()
+        '/home': (context) => const Home()
       },
     );
   }

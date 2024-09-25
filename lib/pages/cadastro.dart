@@ -218,7 +218,7 @@ class _CadastroState extends State<Cadastro> {
                             if (_formKey.currentState?.validate() ?? false) {
                               // Se o formulário for válido, você pode prosseguir com a lógica de cadastro
                               print("Cadastro realizado com sucesso!");
-                              Navigator.pushNamed(context, "/");
+                              Navigator.pushNamed(context, "/login");
                             } else {
                               setState(() {
                                 _errorMessage =
@@ -250,7 +250,7 @@ class _CadastroState extends State<Cadastro> {
                         Divider(),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, "/");
+                            Navigator.pushNamed(context, "/login");
                           },
                           child: const Text(
                             "Já tenho conta",
