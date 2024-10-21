@@ -15,6 +15,13 @@ class _CadastroState extends State<Cadastro> {
   bool _isObscuredConfirm = true;
   String? _senha; // Para armazenar a senha para comparação
 
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _senhaController = TextEditingController();
+  TextEditingController _nomeController = TextEditingController();
+  TextEditingController _cpfController = TextEditingController();
+  TextEditingController _celularController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +82,7 @@ class _CadastroState extends State<Cadastro> {
                         ),
                         // Nome
                         TextFormField(
+                          controller: _nomeController,
                           autofocus: true,
                           decoration: InputDecoration(
                             icon: Icon(Icons.people_rounded),
@@ -96,6 +104,7 @@ class _CadastroState extends State<Cadastro> {
                         SizedBox(height: 16),
                         // CPF
                         TextFormField(
+                          controller: _cpfController,
                           decoration: InputDecoration(
                             icon: Icon(Icons.edit_document),
                             hintText: "CPF",
@@ -114,6 +123,7 @@ class _CadastroState extends State<Cadastro> {
                         SizedBox(height: 16),
                         // Celular
                         TextFormField(
+                          controller: _celularController,
                           decoration: InputDecoration(
                             icon: Icon(Icons.phone_android),
                             hintText: "Celular",
@@ -131,6 +141,7 @@ class _CadastroState extends State<Cadastro> {
                         SizedBox(height: 16),
                         // Email
                         TextFormField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                             icon: Icon(Icons.mail),
                             hintText: "Email",
@@ -150,6 +161,7 @@ class _CadastroState extends State<Cadastro> {
                         SizedBox(height: 16),
                         // Senha
                         TextFormField(
+                          controller: _senhaController,
                           decoration: InputDecoration(
                             icon: Icon(Icons.lock),
                             hintText: "Senha",
@@ -217,8 +229,11 @@ class _CadastroState extends State<Cadastro> {
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
                               // Se o formulário for válido, você pode prosseguir com a lógica de cadastro
-                              print("Cadastro realizado com sucesso!");
-                              Navigator.pushNamed(context, "/login");
+                              if (_emailController.text != "" && _senhaController !="" && _cpfController != "" && _celularController !="") {
+                                print("sucesso");
+
+                              }
+                              
                             } else {
                               setState(() {
                                 _errorMessage =
@@ -280,3 +295,4 @@ class _CadastroState extends State<Cadastro> {
     );
   }
 }
+

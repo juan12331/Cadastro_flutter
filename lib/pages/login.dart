@@ -12,6 +12,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _senhaController = TextEditingController();
+ 
   bool _isObscured = true;
 
   @override
@@ -83,6 +86,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         TextFormField(
+                          controller: _emailController,
                           autofocus: true,
                           decoration: InputDecoration(
                             icon: Icon(Icons.mail),
@@ -103,6 +107,7 @@ class _LoginState extends State<Login> {
                         ),
                         SizedBox(height: 16),
                         TextFormField(
+                          controller: _senhaController,
                           autofocus: true,
                           decoration: InputDecoration(
                             icon: Icon(Icons.lock),
